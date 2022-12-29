@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class Kata5P1 {
 
@@ -25,6 +26,14 @@ public class Kata5P1 {
         SelectApp app = new SelectApp();
         app.selectAll();
         createNewTable();
+        
+        String email = "email.txt";
+        List<String> emails = MailListReader.read(email);
+        InsertarDatosTabla newDatos = new InsertarDatosTabla();
+        
+        for (String addr : emails) {
+            newDatos.insert(addr);
+        }
     }
 
 }
